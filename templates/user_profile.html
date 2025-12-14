@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>User</title>
+</head>
+<body>
+  <h1>User {{ username }}</h1>
+  <div id="follow-stats"></div>
+  <script>
+    async function load(){
+      const res = await fetch('/api/users/' + '{{ username }}');
+      const body = await res.json();
+      document.getElementById('follow-stats').innerText = 'Followers: ' + body.followers + ' Following: ' + body.following;
+    }
+    load();
+  </script>
+</body>
+</html>

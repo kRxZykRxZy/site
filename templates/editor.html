@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Editor</title>
+  <link rel="stylesheet" href="/static/css/main.css"/>
+  <style>#editor{height:80vh;border:1px solid #ccc}</style>
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@6/dist/index.min.js"></script>
+</head>
+<body>
+  <h1>Editor - project {{ project_id }}</h1>
+  <div id="file-list"></div>
+  <div id="editor">Loading...</div>
+  <button id="save">Save</button>
+  <script>window.PROJECT_ID = {{ project_id }};</script>
+  <script src="/static/js/editor.js"></script>
+</body>
+</html>
