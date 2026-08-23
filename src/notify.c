@@ -1,12 +1,11 @@
 #include "guardian.h"
 #include <stdio.h>
+#include <string.h>
 #include <time.h>
 
 void notify_event(const char *level,const char *title,const char *message){
     FILE *f=fopen("/var/log/pi-guardian.log","a");
     if(f){time_t t=time(NULL);fprintf(f,"%ld [%s] %s: %s\n",(long)t,level,title,message);fclose(f);}
-    /* Only important events leave the Pi: the push service receives an empty
-       Web Push payload and the PWA fetches the authenticated event feed. */
     if(level && (!strcmp(level,"CRITICAL") || !strcmp(level,"WARNING")))
         push_broadcast(title,message,level);
 }
