@@ -1,0 +1,16 @@
+[Unit]
+Description=Pi Guardian infrastructure watchdog
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/pi-guardian
+ExecStart=/opt/pi-guardian/pi-guardian
+Restart=always
+RestartSec=3
+User=root
+NoNewPrivileges=false
+
+[Install]
+WantedBy=multi-user.target
